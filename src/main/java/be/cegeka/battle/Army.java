@@ -19,7 +19,7 @@ public class Army {
         army.add(soldier);
     }
 
-    public List getArmy() {
+    public List<Soldier> getArmy() {
         return army;
     }
 
