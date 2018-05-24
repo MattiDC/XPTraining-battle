@@ -32,14 +32,6 @@ public class Soldier {
         return this.name;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public Soldier fight(Soldier soldier) {
         Soldier loser = this;
 
