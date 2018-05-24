@@ -143,7 +143,7 @@ public class SoldierTest {
         Weapon axe = new Axe();
         normalTrainedSoldier.addWeapon(axe);
 
-        assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(normalTrainedSoldier)).isTrue();
+        assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(highlyTrainedSoldier)).isTrue();
     }
 
 }
