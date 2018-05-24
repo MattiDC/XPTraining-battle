@@ -32,18 +32,14 @@ public class Soldier {
     }
 
     public Soldier fight(Soldier soldier) {
-        this.getWeapon().weaponWinsFrom(soldier.getWeapon());
         Soldier loser = this;
 
-        if (compareDamageAttackerAndDefender(soldier)) {
+        if (this.getWeapon().weaponWinsFrom(soldier.getWeapon()) == true) {
             loser = soldier;
+            return loser;
         }
 
         return loser;
-    }
-
-    private boolean compareDamageAttackerAndDefender(Soldier soldier) {
-        return this.getWeapon().getWeaponDamage(soldier.weapon) >= soldier.getWeapon().getWeaponDamage(this.weapon);
     }
 
     public void addWeapon(Weapon weapon) {

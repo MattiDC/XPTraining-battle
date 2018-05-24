@@ -1,6 +1,5 @@
 package be.cegeka.battle;
 
-
 public abstract class Weapon {
 
     protected int weaponDamage;
@@ -22,7 +21,11 @@ public abstract class Weapon {
     }
 
     public boolean weaponWinsFrom(Weapon otherWeapon) {
-        return true;
+        int damage = this.hasAdvantage(otherWeapon) + this.getWeaponDamage(otherWeapon);
+        if (damage >= otherWeapon.getWeaponDamage(this)) {
+            return true;
+        }
+        return false;
     }
 
     abstract int hasAdvantage(Weapon weapon);

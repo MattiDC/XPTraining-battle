@@ -10,10 +10,10 @@ public class Axe extends Weapon {
     @Override
     int hasAdvantage(Weapon weapon) {
         if (weapon instanceof Spear) {
-            return super.weaponDamage + 3;
+            return 3;
         }
 
-        return super.weaponDamage;
+        return 0;
     }
 
 }

@@ -124,4 +124,17 @@ public class SoldierTest {
 
     }
 
+    @Test
+    public void fight_attackerHasSword_defenderHasAxe_attackerWins() {
+        Weapon sword = new Sword();
+        highlyTrainedSoldier.addWeapon(sword);
+
+        Weapon axe = new Axe();
+        normalTrainedSoldier.addWeapon(axe);
+
+        assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(normalTrainedSoldier)).isTrue();
+
+
+    }
+
 }

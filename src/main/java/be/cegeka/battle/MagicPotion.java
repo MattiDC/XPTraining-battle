@@ -9,6 +9,6 @@ public class MagicPotion extends Weapon {
 
     @Override
     int hasAdvantage(Weapon weapon) {
-        return super.weaponDamage;
+        return 0;
     }
 }
