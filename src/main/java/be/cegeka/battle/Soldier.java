@@ -10,14 +10,21 @@ public class Soldier {
 
     private Weapon weapon = new BareFist();
 
-    public Soldier() {
+    boolean highlyTrained = false;
 
+    public Weapon getWeapon() {
+        return this.weapon;
     }
 
     public Soldier(String name) {
         Validate.isTrue(isNotBlank(name));
 
         this.name = name;
+    }
+
+    public Soldier(String name, boolean highlyTrained) {
+        this(name);
+        this.highlyTrained = highlyTrained;
     }
 
     String getName() {
@@ -35,6 +42,9 @@ public class Soldier {
     }
 
     public void addWeapon(Weapon weapon) {
+        if (this.highlyTrained == false && weapon.specializedWeapon == true) {
+            throw new IllegalArgumentException("Kan geen specializedWeapon toekennen aan een normale Soldier!");
+        }
         this.weapon = weapon;
     }
 }

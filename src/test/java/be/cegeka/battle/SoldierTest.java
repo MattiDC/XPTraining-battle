@@ -2,9 +2,23 @@ package be.cegeka.battle;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class SoldierTest {
+
+    private Soldier highlyTrainedSoldier, normalTrainedSoldier;
+
+    @Before
+    public void makeHighlyTrainedSoldier() {
+        highlyTrainedSoldier = new Soldier("Jos", true);
+    }
+
+    @Before
+    public void makeNormalTrainedSoldier() {
+        normalTrainedSoldier = new Soldier("Jos");
+    }
+
 
     @Test
     public void construction_ASoldierMustHaveAName() {
@@ -52,6 +66,21 @@ public class SoldierTest {
         defender.addWeapon(weaponDefender);
 
         assertThat(attacker.fight(defender).equals(attacker)).isTrue();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void normalTrained_addSpecializedWeapon() {
+        Weapon specializedWeapon = new BroadAxe();
+        normalTrainedSoldier.addWeapon(specializedWeapon);
+
+    }
+
+    @Test
+    public void highlyTrained_addSpecializedWeapon() {
+        Weapon specializedWeapon = new BroadAxe();
+        highlyTrainedSoldier.addWeapon(specializedWeapon);
+
+        assertThat(highlyTrainedSoldier.getWeapon().equals(specializedWeapon));
     }
 
 }
