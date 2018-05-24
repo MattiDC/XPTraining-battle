@@ -6,7 +6,6 @@ import org.apache.commons.lang3.Validate;
 
 public class Soldier {
 
-
     private String name;
 
     private int id;
@@ -50,7 +49,6 @@ public class Soldier {
         }
         return loser;
     }
-
 
     public void addWeapon(Weapon weapon) {
         if (this.highlyTrained == false && weapon.specializedWeapon == true) {
