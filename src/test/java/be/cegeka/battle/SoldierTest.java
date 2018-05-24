@@ -76,8 +76,25 @@ public class SoldierTest {
     }
 
     @Test
-    public void highlyTrained_addSpecializedWeapon_willWork() {
+    public void highlyTrained_addBroadAxe_willWork() {
         Weapon specializedWeapon = new BroadAxe();
+        highlyTrainedSoldier.addWeapon(specializedWeapon);
+
+        assertThat(highlyTrainedSoldier.getWeapon().equals(specializedWeapon));
+    }
+
+
+    @Test
+    public void highlyTrained_addTrident_willWork() {
+        Weapon specializedWeapon = new Trident();
+        highlyTrainedSoldier.addWeapon(specializedWeapon);
+
+        assertThat(highlyTrainedSoldier.getWeapon().equals(specializedWeapon));
+    }
+
+    @Test
+    public void highlyTrained_addTwoHandedSword_willWork() {
+        Weapon specializedWeapon = new TwoHandedSword();
         highlyTrainedSoldier.addWeapon(specializedWeapon);
 
         assertThat(highlyTrainedSoldier.getWeapon().equals(specializedWeapon));

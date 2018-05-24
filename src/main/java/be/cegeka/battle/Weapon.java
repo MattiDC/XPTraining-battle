@@ -7,9 +7,11 @@ public abstract class Weapon {
 
     protected boolean specializedWeapon = false;
 
-    public int getWeaponDamage(Soldier opponent) {
+    protected int bonusDamage = 3;
+
+    public int getWeaponDamage(Weapon weapon) {
         if (this instanceof MagicPotion) {
-            if (opponent.getWeapon().weaponDamage % 2 == 0) {
+            if (weapon.weaponDamage % 2 == 0) {
                 this.weaponDamage = 10;
             } else {
                 this.weaponDamage = 0;
@@ -18,4 +20,11 @@ public abstract class Weapon {
 
         return weaponDamage;
     }
+
+    public boolean weaponWinsFrom(Weapon otherWeapon) {
+        return true;
+    }
+
+    abstract int hasAdvantage(Weapon weapon);
+
 }
