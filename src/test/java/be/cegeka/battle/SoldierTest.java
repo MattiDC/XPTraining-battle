@@ -1,8 +1,8 @@
 package be.cegeka.battle;
 
-import org.junit.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.Test;
 
 public class SoldierTest {
 
@@ -26,6 +26,32 @@ public class SoldierTest {
     @Test(expected = IllegalArgumentException.class)
     public void construction_ASoldierMustHaveAName_CannotBeBlank() {
         new Soldier("   ");
+    }
+
+    @Test
+    public void fight_soldier_attackerWins() {
+        Soldier attacker = new Soldier("Jan");
+        Weapon weaponAttacker = new Axe();
+        attacker.addWeapon(weaponAttacker);
+
+        Weapon weaponDefender = new BareFist();
+        Soldier defender = new Soldier("Jip");
+        defender.addWeapon(weaponDefender);
+
+        assertThat(attacker.fight(defender).equals(defender)).isTrue();
+    }
+
+    @Test
+    public void fight_soldier_defenderWins() {
+        Soldier attacker = new Soldier("Jan");
+        Weapon weaponAttacker = new BareFist();
+        attacker.addWeapon(weaponAttacker);
+
+        Weapon weaponDefender = new Sword();
+        Soldier defender = new Soldier("Jip");
+        defender.addWeapon(weaponDefender);
+
+        assertThat(attacker.fight(defender).equals(attacker)).isTrue();
     }
 
 }
