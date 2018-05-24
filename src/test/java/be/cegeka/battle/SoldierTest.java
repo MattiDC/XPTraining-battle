@@ -146,4 +146,15 @@ public class SoldierTest {
         assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(highlyTrainedSoldier)).isTrue();
     }
 
+    @Test
+    public void fight_attackerHasSpear_defenderHasSword_attackerHasAdvantege_attackerLoses() {
+        Weapon spear = new Spear();
+        highlyTrainedSoldier.addWeapon(spear);
+
+        Weapon sword = new Sword();
+        normalTrainedSoldier.addWeapon(sword);
+
+        assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(normalTrainedSoldier)).isTrue();
+    }
+
 }
