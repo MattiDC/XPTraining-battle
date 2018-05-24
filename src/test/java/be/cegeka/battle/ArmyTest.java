@@ -11,7 +11,7 @@ public class ArmyTest {
         Army army = new Army("Army1");
 
         Soldier soldier = new Soldier("soldier");
-        army.addSoldier(soldier);
+        army.enlistSoldier(soldier);
 
         Assertions.assertThat(army.getArmy()).containsOnly(soldier);
     }

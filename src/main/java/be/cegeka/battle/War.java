@@ -15,17 +15,15 @@ public class War {
 
             if (loser == attacker) {
                 attackers.remove(0);
-            } else if (loser == defender) {
+            } else {
                 defenders.remove(0);
             }
         }
-
         if (attackers.size() == 0) {
             result = "Defenders win!";
         } else {
             result = "Attackers win!";
         }
-
         return result;
 
     }

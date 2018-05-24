@@ -124,7 +124,15 @@ public class SoldierTest {
 
     }
 
-    @Test
+    // @Test
+    // public void soldierIsEnlistedAndReturnsID() {
+    // Soldier attacker = new Soldier("Jan");
+    // Weapon weaponAttacker = new Axe();
+    // attacker.addWeapon(weaponAttacker);
+    //
+    // assertEquals("69", attacker.getId());
+    // }
+
     public void fight_attackerHasSword_defenderHasAxe_attackerHasAdvantage_attackerWins() {
         Weapon sword = new Sword();
         highlyTrainedSoldier.addWeapon(sword);

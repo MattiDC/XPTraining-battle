@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Army {
 
+
     private String name;
 
 
@@ -15,7 +16,7 @@ public class Army {
         this.name = name;
     }
 
-    public void addSoldier(Soldier soldier) {
+    public void enlistSoldier(Soldier soldier) {
         army.add(soldier);
     }
 

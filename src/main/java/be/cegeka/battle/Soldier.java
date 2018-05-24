@@ -8,6 +8,8 @@ public class Soldier {
 
     private String name;
 
+    private int id;
+
     private Weapon weapon = new BareFist();
 
     boolean highlyTrained = false;
@@ -18,7 +20,6 @@ public class Soldier {
 
     public Soldier(String name) {
         Validate.isTrue(isNotBlank(name));
-
         this.name = name;
     }
 
@@ -27,7 +28,7 @@ public class Soldier {
         this.highlyTrained = highlyTrained;
     }
 
-    String getName() {
+    public String getName() {
         return this.name;
     }
 
@@ -38,7 +39,6 @@ public class Soldier {
             loser = soldier;
             return loser;
         }
-
         return loser;
     }
 
