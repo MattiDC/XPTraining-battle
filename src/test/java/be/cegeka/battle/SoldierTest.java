@@ -125,7 +125,7 @@ public class SoldierTest {
     }
 
     @Test
-    public void fight_attackerHasSword_defenderHasAxe_attackerWins() {
+    public void fight_attackerHasSword_defenderHasAxe_attackerHasAdvantage_attackerWins() {
         Weapon sword = new Sword();
         highlyTrainedSoldier.addWeapon(sword);
 
@@ -133,8 +133,17 @@ public class SoldierTest {
         normalTrainedSoldier.addWeapon(axe);
 
         assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(normalTrainedSoldier)).isTrue();
+    }
 
+    @Test
+    public void fight_attackerHasSpear_defenderHasAxe_attackerDoesNotHaveAdvantege_attackerLoses() {
+        Weapon spear = new Spear();
+        highlyTrainedSoldier.addWeapon(spear);
 
+        Weapon axe = new Axe();
+        normalTrainedSoldier.addWeapon(axe);
+
+        assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(normalTrainedSoldier)).isTrue();
     }
 
 }
