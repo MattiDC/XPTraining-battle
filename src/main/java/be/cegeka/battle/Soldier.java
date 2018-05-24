@@ -34,11 +34,15 @@ public class Soldier {
     public Soldier fight(Soldier soldier) {
         Soldier loser = this;
 
-        if (this.weapon.weaponDamage >= soldier.weapon.weaponDamage) {
+        if (compareDamageAttackerAndDefender(soldier)) {
             loser = soldier;
         }
 
         return loser;
+    }
+
+    private boolean compareDamageAttackerAndDefender(Soldier soldier) {
+        return this.getWeapon().getWeaponDamage(soldier) >= soldier.getWeapon().getWeaponDamage(this);
     }
 
     public void addWeapon(Weapon weapon) {
@@ -46,5 +50,9 @@ public class Soldier {
             throw new IllegalArgumentException("Kan geen specializedWeapon toekennen aan een normale Soldier!");
         }
         this.weapon = weapon;
+    }
+
+    public int getWeaponDamage(Soldier soldier) {
+        return getWeapon().getWeaponDamage(soldier);
     }
 }
