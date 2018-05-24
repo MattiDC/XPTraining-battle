@@ -1,6 +1,7 @@
 package be.cegeka.battle;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -105,6 +106,15 @@ public class SoldierTest {
 
         assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(highlyTrainedSoldier)).isTrue();
 
+    }
+
+    @Test
+    public void soldierIsEnlistedAndReturnsID() {
+        Soldier attacker = new Soldier("Jan");
+        Weapon weaponAttacker = new Axe();
+        attacker.addWeapon(weaponAttacker);
+
+        assertEquals("69", attacker.getId());
     }
 
 }

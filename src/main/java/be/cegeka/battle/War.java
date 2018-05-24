@@ -4,6 +4,8 @@ import java.util.List;
 
 public class War {
 
+    private static Headquarters hq;
+
     public static String engageWar(List<Soldier> attackers, List<Soldier> defenders) {
         String result;
 
@@ -15,17 +17,17 @@ public class War {
 
             if (loser == attacker) {
                 attackers.remove(0);
-            } else if (loser == defender) {
+            } else {
                 defenders.remove(0);
             }
         }
-
         if (attackers.size() == 0) {
+            hq.ReportVictory(defenders.size());
             result = "Defenders win!";
         } else {
+            hq.ReportVictory(defenders.size());
             result = "Attackers win!";
         }
-
         return result;
 
     }

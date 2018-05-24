@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Army {
 
+    private Headquarters hq;
+
     private String name;
 
 
@@ -15,8 +17,9 @@ public class Army {
         this.name = name;
     }
 
-    public void addSoldier(Soldier soldier) {
+    public void enlistSoldier(Soldier soldier) {
         army.add(soldier);
+        soldier.setId(hq.ReportEnlistment(name));
     }
 
     public List<Soldier> getArmy() {

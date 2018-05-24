@@ -6,7 +6,11 @@ import org.apache.commons.lang3.Validate;
 
 public class Soldier {
 
+    private Headquarters hq;
+
     private String name;
+
+    private int id;
 
     private Weapon weapon = new BareFist();
 
@@ -18,7 +22,6 @@ public class Soldier {
 
     public Soldier(String name) {
         Validate.isTrue(isNotBlank(name));
-
         this.name = name;
     }
 
@@ -27,17 +30,24 @@ public class Soldier {
         this.highlyTrained = highlyTrained;
     }
 
-    String getName() {
+    public String getName() {
         return this.name;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Soldier fight(Soldier soldier) {
         Soldier loser = this;
-
         if (compareDamageAttackerAndDefender(soldier)) {
             loser = soldier;
         }
-
+        // hq.ReportCasualty(loser.id);
         return loser;
     }
 
