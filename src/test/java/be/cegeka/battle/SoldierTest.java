@@ -10,7 +10,7 @@ public class SoldierTest {
     private Soldier highlyTrainedSoldier, normalTrainedSoldier;
 
     @Before
-    public void makeHighlyTrainedSoldier() {
+    public void makeHighlyTrainedSoldiers() {
         highlyTrainedSoldier = new Soldier("Jos", true);
     }
 
@@ -43,7 +43,7 @@ public class SoldierTest {
     }
 
     @Test
-    public void fight_soldier_attackerWins() {
+    public void fight_attackerHasAxe_defenderHasBareFist_attackerWins() {
         Soldier attacker = new Soldier("Jan");
         Weapon weaponAttacker = new Axe();
         attacker.addWeapon(weaponAttacker);
@@ -56,7 +56,7 @@ public class SoldierTest {
     }
 
     @Test
-    public void fight_soldier_defenderWins() {
+    public void fight_soldierHasBareFist_defenderHasSword_defenderWins() {
         Soldier attacker = new Soldier("Jan");
         Weapon weaponAttacker = new BareFist();
         attacker.addWeapon(weaponAttacker);
@@ -69,18 +69,42 @@ public class SoldierTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void normalTrained_addSpecializedWeapon() {
+    public void normalTrained_addSpecializedWeapon_throwsException() {
         Weapon specializedWeapon = new BroadAxe();
         normalTrainedSoldier.addWeapon(specializedWeapon);
 
     }
 
     @Test
-    public void highlyTrained_addSpecializedWeapon() {
+    public void highlyTrained_addSpecializedWeapon_willWork() {
         Weapon specializedWeapon = new BroadAxe();
         highlyTrainedSoldier.addWeapon(specializedWeapon);
 
         assertThat(highlyTrainedSoldier.getWeapon().equals(specializedWeapon));
+    }
+
+    @Test
+    public void fight_soldiersOpponentHasEvenDamage_AttackerHasMagicPotion_OpponentLoses() {
+        Weapon specializedWeapon = new MagicPotion();
+        highlyTrainedSoldier.addWeapon(specializedWeapon);
+
+        Weapon weapon = new Sword();
+        normalTrainedSoldier.addWeapon(weapon);
+
+        assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier)).isEqualTo(normalTrainedSoldier);
+
+    }
+
+    @Test
+    public void fight_soldiersOpponentHasUnevenDamage_AttackerHasMagicPotion_AttackerLoses() {
+        Weapon specializedWeapon = new MagicPotion();
+        highlyTrainedSoldier.addWeapon(specializedWeapon);
+
+        Weapon weapon = new Axe();
+        normalTrainedSoldier.addWeapon(weapon);
+
+        assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(highlyTrainedSoldier)).isTrue();
+
     }
 
 }
