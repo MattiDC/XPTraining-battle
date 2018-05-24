@@ -7,4 +7,13 @@ public class Axe extends Weapon {
         super.weaponDamage = 3;
     }
 
+    @Override
+    int hasAdvantage(Weapon weapon) {
+        if (weapon instanceof Spear) {
+            return 3;
+        }
+
+        return 0;
+    }
+
 }

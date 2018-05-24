@@ -1,7 +1,6 @@
 package be.cegeka.battle;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -77,8 +76,25 @@ public class SoldierTest {
     }
 
     @Test
-    public void highlyTrained_addSpecializedWeapon_willWork() {
+    public void highlyTrained_addBroadAxe_willWork() {
         Weapon specializedWeapon = new BroadAxe();
+        highlyTrainedSoldier.addWeapon(specializedWeapon);
+
+        assertThat(highlyTrainedSoldier.getWeapon().equals(specializedWeapon));
+    }
+
+
+    @Test
+    public void highlyTrained_addTrident_willWork() {
+        Weapon specializedWeapon = new Trident();
+        highlyTrainedSoldier.addWeapon(specializedWeapon);
+
+        assertThat(highlyTrainedSoldier.getWeapon().equals(specializedWeapon));
+    }
+
+    @Test
+    public void highlyTrained_addTwoHandedSword_willWork() {
+        Weapon specializedWeapon = new TwoHandedSword();
         highlyTrainedSoldier.addWeapon(specializedWeapon);
 
         assertThat(highlyTrainedSoldier.getWeapon().equals(specializedWeapon));
@@ -108,13 +124,34 @@ public class SoldierTest {
 
     }
 
-    @Test
-    public void soldierIsEnlistedAndReturnsID() {
-        Soldier attacker = new Soldier("Jan");
-        Weapon weaponAttacker = new Axe();
-        attacker.addWeapon(weaponAttacker);
+    // @Test
+    // public void soldierIsEnlistedAndReturnsID() {
+    // Soldier attacker = new Soldier("Jan");
+    // Weapon weaponAttacker = new Axe();
+    // attacker.addWeapon(weaponAttacker);
+    //
+    // assertEquals("69", attacker.getId());
+    // }
 
-        assertEquals("69", attacker.getId());
+    public void fight_attackerHasSword_defenderHasAxe_attackerHasAdvantage_attackerWins() {
+        Weapon sword = new Sword();
+        highlyTrainedSoldier.addWeapon(sword);
+
+        Weapon axe = new Axe();
+        normalTrainedSoldier.addWeapon(axe);
+
+        assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(normalTrainedSoldier)).isTrue();
+    }
+
+    @Test
+    public void fight_attackerHasSpear_defenderHasAxe_attackerDoesNotHaveAdvantege_attackerLoses() {
+        Weapon spear = new Spear();
+        highlyTrainedSoldier.addWeapon(spear);
+
+        Weapon axe = new Axe();
+        normalTrainedSoldier.addWeapon(axe);
+
+        assertThat(highlyTrainedSoldier.fight(normalTrainedSoldier).equals(highlyTrainedSoldier)).isTrue();
     }
 
 }

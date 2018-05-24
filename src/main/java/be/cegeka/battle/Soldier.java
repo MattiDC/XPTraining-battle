@@ -6,7 +6,6 @@ import org.apache.commons.lang3.Validate;
 
 public class Soldier {
 
-    private Headquarters hq;
 
     private String name;
 
@@ -44,16 +43,14 @@ public class Soldier {
 
     public Soldier fight(Soldier soldier) {
         Soldier loser = this;
-        if (compareDamageAttackerAndDefender(soldier)) {
+
+        if (this.getWeapon().weaponWinsFrom(soldier.getWeapon()) == true) {
             loser = soldier;
+            return loser;
         }
-        // hq.ReportCasualty(loser.id);
         return loser;
     }
 
-    private boolean compareDamageAttackerAndDefender(Soldier soldier) {
-        return this.getWeapon().getWeaponDamage(soldier) >= soldier.getWeapon().getWeaponDamage(this);
-    }
 
     public void addWeapon(Weapon weapon) {
         if (this.highlyTrained == false && weapon.specializedWeapon == true) {
@@ -63,6 +60,6 @@ public class Soldier {
     }
 
     public int getWeaponDamage(Soldier soldier) {
-        return getWeapon().getWeaponDamage(soldier);
+        return getWeapon().getWeaponDamage(soldier.weapon);
     }
 }
